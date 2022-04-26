@@ -1,0 +1,211 @@
+:root {
+    --scyan: hsl(174, 77%, 80%);
+    --strcyan: hsl(174, 86%, 45%);
+    --lgred: hsl(14, 92%, 95%);
+    --lred: hsl(15, 100%, 70%);
+    --pblue: hsl(226, 100%, 87%);
+    --vpblue: hsl(230, 100%, 99%);
+    --lgbluesl: hsl(224, 65%, 95%);
+    --lgbluebg: hsl(223, 50%, 87%);
+    --gblue: hsl(225, 20%, 60%);
+    --ddblue: hsl(227, 35%, 25%);
+    /* --color: rgb(14, 217, 197); */
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;   
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    flex-direction: column;
+
+    background-image: url(images/pattern-circles.svg), url(images/bg-pattern.svg);
+    background-size:  auto 15rem, 100% auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top 10% left 50%, top -10% left 0;
+    background-color: var(--vpblue);
+}
+
+.heading {
+    margin-bottom: 9rem;
+    text-align: center;
+}
+
+.heading--main {
+    font-size: 3rem;
+    color: var(--ddblue);
+}
+
+.text {
+    color: var(--gblue);
+    margin-top: 1rem;
+}
+
+.card {
+    max-width: 54rem;
+    width: 100%;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 17px 17px 7px hsl(224deg 65% 95%);
+}
+
+.card__input {
+    padding: 5rem 4.5rem 4.2rem;
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    grid-template-areas: "pageviews price price price"
+                         "slider slider slider slider"
+                         "billing billing billing billing";
+    grid-row-gap: 3.5rem;
+    align-items: center;
+}
+
+.views {
+    grid-area: pageviews;
+    text-transform: uppercase;
+    color: var(--gblue);
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.billing {
+    grid-area: billing;
+    justify-self: center;
+    position: relative;
+}
+
+.billing_text {
+    color: var(--gblue);
+    font-size: 1.3rem;
+    margin: 0 0.8rem;
+}
+
+.discount {
+    position: absolute;
+    background: var(--lgred);
+    color: var(--lred);
+    font-size: 1rem;
+    border-radius: 100px;
+    padding: 0.3rem 0.7rem;
+    right: -7.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.discount.half {display: none;}
+
+.price {
+    grid-area: price;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--gblue);
+}
+
+.price span {
+    font-size: 4rem;
+    color: var(--ddblue);
+    font-weight: 700;
+}
+
+.range-slider {
+    grid-area: slider;
+}
+
+.card__submit {
+    padding: 3.5rem 5rem;
+    border-top: 1px solid var(--lgbluesl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.features__item {
+    list-style: none;
+    background: url(images/icon-check.svg) left 0 top 50% no-repeat;
+    background-size: auto 0.9rem;
+    padding-left: 2.5rem;
+    font-size: 1.3rem;
+    color: var(--gblue);
+}
+
+.features__item:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.button {
+    padding: 1.3rem 4rem;
+    border-radius: 100px;
+    background: var(--ddblue);
+    border: none;
+    cursor: pointer;
+    color: var(--pblue);
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: inherit;
+    transition: all .2s ease-in-out;
+}
+
+.button:hover {
+    color: white;
+}
+
+.break {
+    display: none;
+}
+
+@media screen and (max-width: 1100px) {
+    html {
+        font-size: 58%;
+    }
+
+    .container {
+        background-size:  auto 15rem, auto 50vh;
+        background-position: top 4% left 50%, top 0 left 0;
+        padding: 6rem 4rem;
+    }
+
+    .card__submit {
+        flex-direction: column;
+        gap: 5rem;
+    }
+
+    .break {
+        display: block;
+    }
+
+    .card__input {
+        grid-template-columns: 1fr;
+        grid-template-areas: "pageviews"
+                             "slider"
+                             "price"
+                             "billing";  
+    }
+
+    .price, .views {
+        justify-self: center;
+    }
+
+    .discount.full {display: none;}
+    .discount.half {display: inline-block; right: -4rem;}
+}
