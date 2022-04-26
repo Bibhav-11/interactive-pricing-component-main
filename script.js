@@ -47,7 +47,7 @@ function calcPriceViews() {
 }
 
 function evaluatePrice(price) {
-    return duration === "month" ? price : price*0.75;
+    return duration === "month" ? price : price*0.75; 
 }
 
 
